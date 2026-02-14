@@ -1,18 +1,25 @@
 import { Outlet } from "react-router-dom";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import { Header } from "@/components/layout/Header";
 
 export function DashboardLayout() {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <Header />
-        <div className="flex-1 overflow-auto bg-gray-50 p-4 md:p-6 lg:p-8">
-          <Outlet />
+    <div className="min-h-screen bg-[#f5f5f7]">
+      <div className="flex">
+        {/* Left Sidebar - Navigation */}
+        <AppSidebar />
+
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col">
+          {/* Top Header */}
+          <Header />
+
+          {/* Page Content */}
+          <main className="flex-1 py-6 px-8">
+            <Outlet />
+          </main>
         </div>
-      </SidebarInset>
-    </SidebarProvider>
+      </div>
+    </div>
   );
 }

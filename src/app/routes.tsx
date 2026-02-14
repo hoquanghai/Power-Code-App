@@ -10,6 +10,10 @@ const UsersPage = lazy(() =>
   import("@/features/users").then((m) => ({ default: m.UsersPage }))
 );
 
+const NetworkPage = lazy(() =>
+  import("@/features/network").then((m) => ({ default: m.NetworkPage }))
+);
+
 // Placeholder pages for future development
 function ComingSoonPage({ title }: { title: string }) {
   return (
@@ -47,7 +51,19 @@ export const router = createBrowserRouter([
           </SuspenseWrapper>
         ),
       },
-      { path: "analytics", element: <ComingSoonPage title="Analytics" /> },
+      {
+        path: "network",
+        element: (
+          <SuspenseWrapper>
+            <NetworkPage />
+          </SuspenseWrapper>
+        ),
+      },
+      { path: "jobs", element: <ComingSoonPage title="求人" /> },
+      { path: "messages", element: <ComingSoonPage title="メッセージ" /> },
+      { path: "notifications", element: <ComingSoonPage title="通知" /> },
+      { path: "analytics", element: <ComingSoonPage title="分析" /> },
+      { path: "learning", element: <ComingSoonPage title="学習" /> },
       {
         path: "users",
         element: (
@@ -57,7 +73,7 @@ export const router = createBrowserRouter([
         ),
       },
       { path: "documents", element: <ComingSoonPage title="Documents" /> },
-      { path: "settings", element: <ComingSoonPage title="Settings" /> },
+      { path: "settings", element: <ComingSoonPage title="設定" /> },
     ],
   },
   { path: "*", element: <Navigate to="/" replace /> },
